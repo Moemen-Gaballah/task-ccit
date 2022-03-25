@@ -30,4 +30,15 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => env('google_client_id'),
+        'client_secret' => env('google_client_secret'),
+        'redirect' => 'http://127.0.0.1:8000/callback/google',
+    ],
+
+    'facebook' => [
+        'client_id' => env('facebook_client_id'), //USE FROM FACEBOOK DEVELOPER ACCOUNT
+        'client_secret' =>  env('facebook_client_secret'), //USE FROM FACEBOOK DEVELOPER ACCOUNT
+        'redirect' => 'https://examplelaravel8.test/facebook/callback/'
+    ],
 ];

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\GoogleSocialiteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +29,11 @@ Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function(){
     Route::get('users-datatable', [UserController::class, 'dataTables'])->name('users.datatable');
     Route::get('toggle-users-status/{id}', [UserController::class, 'toggleStatus'])->name('users.toggle_status');
 });
+
+// TODO rename controller TO ADD ALL with {provider} - facebook twitter ... etc
+Route::get('auth/{provider}', [GoogleSocialiteController::class, 'redirectToGoogle']);
+Route::get('callback/{provider}', [GoogleSocialiteController::class, 'handleCallback']);
+
+//Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+//Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
+

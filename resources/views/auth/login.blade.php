@@ -64,6 +64,15 @@
                                 @endif
                             </div>
                         </div>
+
+                        <a href="{{ url('auth/google') }}" style="margin-top: 0px !important;background: green;color: #ffffff;padding: 5px;border-radius:7px;" class="ml-2">
+                            <strong>Google Login</strong>
+                        </a>
+
+                        <a href="{{ url('auth/facebook') }}" class="btn btn-facebook btn-user btn-block">
+                            <i class="fab fa-facebook-f fa-fw"></i>
+                            Login with Facebook
+                        </a>
                     </form>
                 </div>
             </div>
