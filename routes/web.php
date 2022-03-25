@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// TODO - Notes Good to make file admin.php for routes admin
+Route::group(['prefix'=>'admin'], function(){
+    Route::resource('users', UserController::class);
+    Route::get('users-datatable', [UserController::class, 'dataTables'])->name('users.datatable');
+    Route::get('toggle-users-status/{id}', [UserController::class, 'toggleStatus'])->name('users.toggle_status');
+});
