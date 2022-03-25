@@ -43,7 +43,7 @@ class UserController extends Controller
             })
             ->addColumn('operation', function ($row) {
 
-                $edit_tag = '<a href="' . url("admin/halls/" . $row->id . "/edit") . '" > <i class="fa fa-edit"></i>  </a>';
+                $edit_tag = '<a href="' . url("admin/users/" . $row->id . "/edit") . '" > <i class="fa fa-edit"></i>  </a>';
 
                 $delete_tag = '<a onclick="deleteUser(\'' . $row->id . '\')" style="cursor: pointer"> <i class="fas fa-trash-alt"></i> </a>';
 
