@@ -94,7 +94,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Coming soon <a href='/home'>Home</a>";
     }
 
     /**
@@ -138,6 +138,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return response()->json(['message' => 'done deleted successfully', 'status' => 'success']);
+        return response()->json(['message' => 'Done deleted successfully', 'status' => 'success']);
     }
 }

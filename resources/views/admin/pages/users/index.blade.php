@@ -101,12 +101,13 @@
                 type: "get",
                 url: "{{url('admin/toggle-users-status')}}/" + id,
                 success: function (response) {
-                    cuteToast({
-                        type: 'success',
-                        message: "{{__('general.change')}}",
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
+                    // cuteToast({
+                    //     type: "success", // or 'info', 'error', 'warning'
+                    //     message: "Toast Message",
+                    //     showConfirmButton: false,
+                    //     timer: 5000
+                    // })
+                    notifyMsg('Done Update Status Successfully', 'success');
 
                 }
             });
@@ -115,7 +116,7 @@
             cuteAlert({
                 type: "question",
                 title: "Delete user",
-                message: "Sure do you want delete?",
+                message: "Sure ? do you want delete",
                 confirmText: "okay",
                 cancelText: "cancel"
             }).then((e) => {
@@ -128,11 +129,8 @@
                             "_token": "{{csrf_token()}}"
                         },
                         success: function (response) {
-                            cuteToast({
-                                type: response.status, // or 'info', 'error', 'warning'
-                                message: response.message,
-                                timer: 3000
-                            })
+
+                            notifyMsg(response.message, response.status);
                             datatable.ajax.reload();
                         }
                     });

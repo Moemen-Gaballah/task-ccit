@@ -68,6 +68,7 @@
  </script>
 
  <script src="{{asset('general/cute-alert/cute-alert.js')}}"></script>
+ <script src="{{asset('general/custom/script.js')}}"></script>
 @stack('js')
 
 </body>

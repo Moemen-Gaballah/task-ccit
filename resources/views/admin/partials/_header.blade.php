@@ -42,6 +42,11 @@
         .form-error {
             color: #dc3545 !important;
         }
+
+        .toast-img {
+            height: 35px !important;
+            margin: 4px;
+        }
     </style>
 
    @yield('style')
