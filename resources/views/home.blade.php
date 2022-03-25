@@ -15,6 +15,11 @@
                     @endif
 
                     {{ __('You are logged in!') }} - <strong>You are {{ auth()->user()->type }}.</strong>
+
+{{--                        TODO Add auth()->user()->type as attribute in model --}}
+                    @if(auth()->user()->type == 'admin')
+                    <strong><a href="{{route('users.index')}}">Users</a></strong>
+                    @endif
                 </div>
             </div>
         </div>
