@@ -20,7 +20,7 @@ class CheckSubscription
             return redirect('/login');
         }
 
-        if (auth()->user() &&  auth()->user()->stripe_id) {
+        if (auth()->user() &&  (auth()->user()->stripe_id || auth()->user()->type == 'admin')) {
             return $next($request);
         }
 

@@ -27,8 +27,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('plans', [SubscriptionController::class, 'index'])->name('plans');
 
-// TODO - Notes Good to make file admin.php for routes admin
-Route::group(['middleware' => ['customer', 'checkSubscription']], function(){
+
+Route::group(['middleware' => ['customer',]], function(){
     Route::get('payments', [PaymentController::class, 'index'])->name('payments');
     Route::post('payments', [PaymentController::class, 'store'])->name('payments.store');
 });

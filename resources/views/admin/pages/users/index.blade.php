@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'عرض القاعات')
+@section('title', 'عرض المستخدمين')
 @section('content')
 
     <!-- Content Header (Page header) -->
