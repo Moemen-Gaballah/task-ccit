@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class InActive
+class CheckSubscription
 {
     /**
      * Handle an incoming request.
@@ -16,16 +16,15 @@ class InActive
      */
     public function handle(Request $request, Closure $next)
     {
-        // TODO - best way override method login and remove this middleware
-        if (auth()->user() &&  auth()->user()->status == 'inactive') {
+        if(!auth()->check()){
+            return redirect('/login');
+        }
 
-            auth()->logout();
-
-            // TODO Return Route => with msg + contact us
-            return redirect('/')->with('block', 'sorry your account suspended.');
+        if (auth()->user() &&  auth()->user()->stripe_id) {
+            return $next($request);
         }
 
 
-        return $next($request);
+        return redirect('/plans')->with('plans', 'please subscription first.');
     }
 }

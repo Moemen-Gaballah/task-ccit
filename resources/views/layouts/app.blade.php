@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <div id="app">
@@ -79,5 +80,7 @@
             @yield('content')
         </main>
     </div>
+
+
 </body>
 </html>

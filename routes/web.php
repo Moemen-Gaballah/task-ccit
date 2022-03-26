@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
+use App\Http\Controllers\Subscriptions\SubscriptionController;
+use App\Http\Controllers\Subscriptions\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('plans', [SubscriptionController::class, 'index'])->name('plans');
+
+// TODO - Notes Good to make file admin.php for routes admin
+Route::group(['middleware' => ['customer', 'checkSubscription']], function(){
+    Route::get('payments', [PaymentController::class, 'index'])->name('payments');
+    Route::post('payments', [PaymentController::class, 'store'])->name('payments.store');
+});
+
 // TODO - Notes Good to make file admin.php for routes admin
 Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function(){
     Route::resource('users', UserController::class);
@@ -36,4 +46,6 @@ Route::get('callback/{provider}', [GoogleSocialiteController::class, 'handleCall
 
 //Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 //Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
+
+
 
